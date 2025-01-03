@@ -1,0 +1,10 @@
+name: 'My Custom Action'
+description: 'This action outputs a message based on an input name.'
+inputs:
+  name:
+    description: 'pritamcdac'
+    required: true
+    default: 'pritamcdac'
+runs:
+  using: 'node12'
+  main: 'index.js'
