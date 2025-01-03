@@ -1,0 +1,21 @@
+name: Use Custom GitHub Action
+
+on:
+  push:
+    branches:
+      - master
+
+jobs:
+  run:
+    runs-on: ubuntu-latest
+
+    steps:
+      # Checkout the code (if your action is in a different repo)
+      - name: Checkout repository
+        uses: actions/checkout@v3
+
+      # Use the custom action
+      - name: Run My Custom Action
+        uses: user/my-action@v1.0.0  # Replace with your actual repository and tag
+        with:
+          name: 'pritamcdac'  # Custom input for the action
