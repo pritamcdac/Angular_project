@@ -1,21 +1,32 @@
-name: Use Custom GitHub Action
+name: Build and Test Angular Project
 
 on:
   push:
     branches:
-      - master
+      - main
 
 jobs:
-  run:
+  build:
     runs-on: ubuntu-latest
 
     steps:
-      # Checkout the code
-      - name: Checkout repository
-        uses: actions/checkout@v3
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-      # Use the custom action (from a local directory within the same repository)
-      - name: Run My Custom Action
-        uses: ./ .github/actions/my-action  # Use relative path for local action
+      - name: Setup Node.js
+        uses: actions/setup-node@v2
         with:
-          name: 'Pritam'  # Custom input for the action
+          node-version: '16'
+
+      - name: Run Angular build command
+        uses: ./.github/actions/angular-action
+        with:
+          node_version: '16'
+          angular_command: 'build'
+          project_directory: './angular-app'
+
+      - name: Upload build artifact
+        uses: actions/upload-artifact@v2
+        with:
+          name: build-output
+          path: ./angular-app/dist
