@@ -1,6 +1,6 @@
 name: Angular Build and Test Action
 description: 'A custom action to build and test an Angular project'
-author: Your Name
+author: Pritamde
 inputs:
   node_version:
     description: 'Node.js version to use for the action'
