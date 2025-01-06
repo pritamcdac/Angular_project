@@ -1,10 +1,27 @@
-name: 'My Custom Action'
-description: 'This action outputs a message based on an input name.'
+name: Angular Build and Test Action
+description: 'A custom action to build and test an Angular project'
+author: Your Name
 inputs:
-  name:
-    description: 'pritamcdac'
+  node_version:
+    description: 'Node.js version to use for the action'
     required: true
-    default: 'pritamcdac'
+    default: '16'
+  angular_command:
+    description: 'Angular CLI command to run (e.g. build, test, lint)'
+    required: true
+    default: 'build'
+  project_directory:
+    description: 'Directory of the Angular project'
+    required: false
+    default: '.'
+outputs:
+  success:
+    description: 'Indicates whether the action ran successfully or failed'
+
 runs:
   using: 'node12'
   main: 'index.js'
+
+branding:
+  color: 'green'
+  icon: 'check-circle'
